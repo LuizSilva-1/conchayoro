@@ -1,3 +1,6 @@
-# conchayoro
-Full stack app for tech learning.
-Welcome to our home page!!
+# 🌊 ConchaYoro
+
+**Full Stack App for Tech Learning**  
+Bem-vindo à nossa homepage! 🚀
+
+Explore, aprenda e desenvolva com a gente em um ambiente feito para quem ama tecnologia.  
