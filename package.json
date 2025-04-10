@@ -6,6 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuizSilva-1/conchayoro.git"
+  },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuizSilva-1/conchayoro/issues"
+  },
+  "homepage": "https://github.com/LuizSilva-1/conchayoro#readme"
 }
