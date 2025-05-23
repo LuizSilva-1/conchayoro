@@ -82,6 +82,35 @@ npm test src/products/products.controller.spec.ts -- --coverage
 
 ---
 
+
+### 🔌 Testes de Integração
+
+A API backend foi testada com **Jest** e **Supertest**, conforme os passos do roteiro da aula **6.b – Testes de Integração** da disciplina de CI/CD.
+
+#### Arquivo de teste utilizado:
+
+```bash
+src/products/products.module.spec.ts
+```
+
+#### Casos testados:
+
+| Método HTTP | Endpoint         | Descrição                                |
+|-------------|------------------|--------------------------------------------|
+| `GET`       | `/products`      | Verifica se a rota responde com 200 e array vazio |
+| `POST`      | `/products`      | Cria um novo produto e verifica os dados retornados |
+| `PUT`       | `/products/:id`  | Atualiza o produto criado com novos dados |
+| `DELETE`    | `/products/:id`  | Exclui o produto e espera retorno nulo |
+
+#### Execução dos testes:
+
+```bash
+npm test src/products/products.module.spec.ts
+```
+
+> ⚠️ Os testes utilizam SQLite em memória e `SequelizeModule.forRoot()` com `synchronize: true`. Isso permite testar sem persistência em disco e é ideal para ambiente de testes automatizados.
+
+
 ## 📡 Endpoints principais
 
 ```http
