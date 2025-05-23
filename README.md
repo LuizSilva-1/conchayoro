@@ -1,4 +1,3 @@
-
 # 🌊 ConchaYoro
 
 Bem-vindo à nossa homepage! 🚀
@@ -54,29 +53,27 @@ Este repositório contém as atividades práticas da disciplina **Continuous Int
 A API backend desenvolvida em NestJS foi testada utilizando **Jest**, conforme roteiro da aula **6.a - Testes de Unidade** da disciplina de CI/CD.
 
 #### Arquivo testado:
-
 ```bash
 src/products/products.controller.spec.ts
 ```
 
 #### Métodos testados:
 
-| Método         | Descrição                                 |
-|----------------|--------------------------------------------|
-| `create()`     | Criação de um novo produto                 |
-| `update()`     | Atualização de um produto existente        |
-| `remove()`     | Exclusão de produto                        |
-| `findAll()`    | Retorno de todos os produtos               |
-| `findOne()`    | Consulta de produto específico por ID      |
+| Método              | Descrição                                          |
+|---------------------|----------------------------------------------------|
+| `create()`          | Criação de um novo produto                         |
+| `update()`          | Atualização de um produto existente                |
+| `remove()`          | Exclusão de produto                                |
+| `findAll()`         | Retorno de todos os produtos                       |
+| `findOne()`         | Consulta de produto específico por ID              |
+| `findByCriteria()`  | Busca por critérios genéricos via body (TDD)       |
 
-#### Execução dos testes
-
+#### Execução dos testes:
 ```bash
 npm test src/products/products.controller.spec.ts
 ```
 
 #### Com cobertura de testes:
-
 ```bash
 npm test src/products/products.controller.spec.ts -- --coverage
 ```
@@ -90,6 +87,7 @@ npm test src/products/products.controller.spec.ts -- --coverage
 ```http
 POST   /products
 GET    /products
+POST   /products/filter
 GET    /products/:id
 PUT    /products/:id
 DELETE /products/:id
@@ -133,4 +131,4 @@ nvm use 18
 **Professor:** Junilson Pereira Souza  
 **Disciplina:** Continuous Integration & Deployment (CI/CD)  
 **Curso:** Pós-graduação Lato Sensu em DevOps & Continuous Software Engineering  
-**Instituição:** PUC Minas  
+**Instituição:** PUC Minas
