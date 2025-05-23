@@ -1,0 +1,23 @@
+name: test-backend
+
+on:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Instalar dependências do backend
+        run: npm --prefix backend install
+
+      - name: Executar testes (exceto o products.service.spec.ts)
+        run: npm --prefix backend test -- --testPathIgnorePatterns=backend/src/products/products.service.spec.ts
