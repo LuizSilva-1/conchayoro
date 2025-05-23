@@ -1,3 +1,4 @@
+
 # 🌊 ConchaYoro
 
 Bem-vindo à nossa homepage! 🚀
@@ -49,6 +50,39 @@ Este repositório contém as atividades práticas da disciplina **Continuous Int
 - Modelos com `SequelizeModule.forRoot`
 - Endpoints RESTful com DTOs
 
+### 🧪 Testes de Unidade
+A API backend desenvolvida em NestJS foi testada utilizando **Jest**, conforme roteiro da aula **6.a - Testes de Unidade** da disciplina de CI/CD.
+
+#### Arquivo testado:
+
+```bash
+src/products/products.controller.spec.ts
+```
+
+#### Métodos testados:
+
+| Método         | Descrição                                 |
+|----------------|--------------------------------------------|
+| `create()`     | Criação de um novo produto                 |
+| `update()`     | Atualização de um produto existente        |
+| `remove()`     | Exclusão de produto                        |
+| `findAll()`    | Retorno de todos os produtos               |
+| `findOne()`    | Consulta de produto específico por ID      |
+
+#### Execução dos testes
+
+```bash
+npm test src/products/products.controller.spec.ts
+```
+
+#### Com cobertura de testes:
+
+```bash
+npm test src/products/products.controller.spec.ts -- --coverage
+```
+
+> 💡 Alguns testes exigiram o uso de `as any` para contornar a tipagem rígida do TypeScript durante mocks. Isso foi feito conscientemente para manter o foco na validação da lógica conforme o roteiro acadêmico.
+
 ---
 
 ## 📡 Endpoints principais
@@ -68,9 +102,6 @@ DELETE /products/:id
 - Projeto executado totalmente via **WSL (Ubuntu)** para evitar conflitos com Node/NPM do Windows.
 - Problemas com `jest`, `npx` e paths UNC resolvidos isolando ambiente.
 - Ainda estudo mais a fundo a estrutura dos payloads JSON.
-
----
-
 
 ---
 
@@ -95,6 +126,7 @@ nvm use 18
 
 > 💡 Essa abordagem garante que todas as instalações de Node, NPM, Jest e dependências sejam totalmente gerenciadas dentro do Linux, evitando erros como caminhos UNC, conflitos de ambiente e falhas com `npx` ou `jest`.
 
+---
 
 ## 👨‍🏫 Acadêmico
 
