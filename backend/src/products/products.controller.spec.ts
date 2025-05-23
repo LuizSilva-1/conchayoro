@@ -59,33 +59,41 @@ describe('ProductsController', () => {
     );
   });
 
+  it('should delete a product', async () => {
+    const mockedResponseData = undefined;
+    const id = '1';
+    jest
+      .spyOn(productsService, 'remove')
+      .mockImplementation(() => Promise.resolve(mockedResponseData));
+    expect(await productsController.remove(id)).toBe(mockedResponseData);
+  });
 
-it('should delete a product', async () => {
-  const mockedResponseData = undefined;
-  const id = '1';
-  jest
-    .spyOn(productsService, 'remove')
-    .mockImplementation(() => Promise.resolve(mockedResponseData));
-  expect(await productsController.remove(id)).toBe(mockedResponseData);
-});
+  it('should return an array of products', async () => {
+    const mockedResponseData = [product] as any;
+    jest
+      .spyOn(productsService, 'findAll')
+      .mockImplementation(() => Promise.resolve(mockedResponseData));
+    expect(await productsController.findAll()).toBe(mockedResponseData);
+  });
 
-it('should return an array of products', async () => {
-  const mockedResponseData = [product] as any;
-  jest
-    .spyOn(productsService, 'findAll')
-    .mockImplementation(() => Promise.resolve(mockedResponseData));
-  expect(await productsController.findAll()).toBe(mockedResponseData);
-});
+  it('should return a specific product', async () => {
+    const mockedResponseData = product as any;
+    const id = '1';
+    jest
+      .spyOn(productsService, 'findOne')
+      .mockImplementation(() => Promise.resolve(mockedResponseData));
+    expect(await productsController.findOne(id)).toBe(mockedResponseData);
+  });
 
-it('should return a specific product', async () => {
-  const mockedResponseData = product as any;
-  const id = '1';
-  jest
-    .spyOn(productsService, 'findOne')
-    .mockImplementation(() => Promise.resolve(mockedResponseData));
-  expect(await productsController.findOne(id)).toBe(mockedResponseData);
-});
-
-
-  
+  // 🧪 Teste conforme roteiro 6.a.1
+  it('should return an array of products by criteria', async () => {
+    const mockedResponseData = [];
+    const criteria = { id: '1' };
+    jest
+      .spyOn(productsService, 'findByCriteria')
+      .mockImplementation(() => Promise.resolve(mockedResponseData));
+    expect(await productsController.findByCriteria(criteria)).toBe(
+      mockedResponseData,
+    );
+  });
 });

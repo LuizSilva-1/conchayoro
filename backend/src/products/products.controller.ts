@@ -27,7 +27,7 @@ export class ProductsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Product> {
+  findOne(@Param('id') id: string): Promise<Product | null> {
     return this.productsService.findOne(id);
   }
 
@@ -42,5 +42,11 @@ export class ProductsController {
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
     return this.productsService.remove(id);
+  }
+
+  // 🧪 Método do roteiro 6.a.1 - Testes com TDD
+  @Post('filter')
+  findByCriteria(@Body() criteria: any): Promise<Product[]> {
+    return this.productsService.findByCriteria(criteria);
   }
 }
