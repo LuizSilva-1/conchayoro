@@ -24,7 +24,8 @@ jobs:
       - name: Executar testes de unidade (products.controller.spec.ts)
         run: |
           echo "Executando testes de unidade: Controller isolado com mocks do serviço"
-          npm test backend/src/products/products.controller.spec.ts
+          cd backend
+          npm test src/products/products.controller.spec.ts
 
   # 🔗 Teste de Integração
   integration-tests:
@@ -46,4 +47,5 @@ jobs:
       - name: Executar testes de integração (products.module.spec.ts)
         run: |
           echo "Executando testes de integração: Controller + Service + Banco (SQLite em memória)"
-          npm test backend/src/products/products.module.spec.ts
+          cd backend
+          npm test src/products/products.module.spec.ts
