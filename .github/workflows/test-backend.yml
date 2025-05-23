@@ -1,14 +1,16 @@
 name: test-backend
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Execução manual pelo GitHub
 
 jobs:
-  tests:
+  # 🧪 Teste de Unidade
+  unit-tests:
+    name: Testes de Unidade (Controller isolado)
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clonar repositório
+      - name: Checkout do repositório
         uses: actions/checkout@v4
 
       - name: Instalar Node.js
@@ -19,5 +21,29 @@ jobs:
       - name: Instalar dependências do backend
         run: npm --prefix backend install
 
-      - name: Executar testes (exceto o products.service.spec.ts)
-        run: npm --prefix backend test -- --testPathIgnorePatterns=backend/src/products/products.service.spec.ts
+      - name: Executar testes de unidade (products.controller.spec.ts)
+        run: |
+          echo "Executando testes de unidade: Controller isolado com mocks do serviço"
+          npm test backend/src/products/products.controller.spec.ts
+
+  # 🔗 Teste de Integração
+  integration-tests:
+    name: Testes de Integração (Fluxo completo)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Instalar dependências do backend
+        run: npm --prefix backend install
+
+      - name: Executar testes de integração (products.module.spec.ts)
+        run: |
+          echo "Executando testes de integração: Controller + Service + Banco (SQLite em memória)"
+          npm test backend/src/products/products.module.spec.ts
