@@ -1,6 +1,8 @@
 # ------------------------------------------------------------
 # main.tf — definição dos recursos AWS
 # ------------------------------------------------------------
+
+# Repositório ECR para armazenar imagens Docker
 resource "aws_ecr_repository" "cyo_ecr_repo" {
   name                 = "${var.PROJECT_NAME}/${var.MODULE_NAME}"
   image_tag_mutability = "MUTABLE"                # Permite reusar tags
@@ -11,16 +13,20 @@ resource "aws_ecr_repository" "cyo_ecr_repo" {
   }
 }
 
+# Aplicação Elastic Beanstalk
 resource "aws_elastic_beanstalk_application" "cyo_eba" {
   name        = var.PROJECT_NAME
   description = "Project application"
 }
 
+# Ambiente Elastic Beanstalk
 resource "aws_elastic_beanstalk_environment" "cyo_ebef" {
-  name                = var.MODULE_NAME
+  # ⚠️ Ajuste aplicado para garantir mínimo de 4 caracteres exigido pela AWS
+  name                = "${var.MODULE_NAME}-env"
   application         = aws_elastic_beanstalk_application.cyo_eba.name
   solution_stack_name = var.SOLUTION_STACK_NAME
 
+  # Configurações do ambiente Beanstalk
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "tier"
